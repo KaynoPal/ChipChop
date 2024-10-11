@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/css/SiteStyle.css" rel="stylesheet" />
+    <link href="~/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/font/font-awesome/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+</head>
+<body>
+
+    @*header*@
+    <partial name="header" />
+
+    <div style="padding-top: 5.6rem; min-height: calc(112.56077vh - 97px - 78px);">
+        @RenderBody()
+    </div>
+
+    @*footer*@
+    <partial name="footer" /> 
+</body>
+</html>

@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/css/AdminStyle.css" rel="stylesheet" />
+    <link href="~/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/font/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+</head>
+<body>
+    <header class="bg-warning">
+        <h1 class="text-gray p-2">پروفایل کاربر</h1>
+    </header>
+    <div style="color: gray;">
+        @RenderBody()
+    </div>
+
+    <a class="signout" asp-controller="Account" asp-action="SignOutUser">خروج از حساب</a>
+</body>
+</html>

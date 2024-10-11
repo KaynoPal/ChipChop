@@ -1,0 +1,76 @@
+﻿@model IEnumerable<chipchop.Datalayer.Models.Content>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>List of Contents</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary rounded-5">Submit new Content</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Img)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubmitDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Visible)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Group)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberAvailable)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Selloff)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @* @Html.DisplayFor(modelItem => item.Img) *@
+                <img src="~/images/content/@item.Img" width="100" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubmitDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Visible)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Group.GroupName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

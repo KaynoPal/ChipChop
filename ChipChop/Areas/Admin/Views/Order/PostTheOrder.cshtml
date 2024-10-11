@@ -1,0 +1,47 @@
+﻿@model (chipchop.Datalayer.Models.Factor,chipchop.Datalayer.Models.FactorDetail,chipchop.Datalayer.Models.User)
+
+@{
+    ViewData["Title"] = "PostTheOrder";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form asp-controller="Order" asp-action="SendOrder" asp-route-id="@Model.Item1.Id">
+    <div style="border: dashed 2px #121212;
+        width: 500px;
+        margin: 30px auto;
+        margin-bottom: 0;
+        padding: 15px;
+        border-radius: 15px;">
+        <h3> سفارش: @Model.Item2.Content.Name</h3>
+        <div style="text-align: center;
+            height: 45px;">
+            <h6>تعداد : @Model.Item2.DetailCount</h6>
+            <h6>شماره رهیگیری : @Model.Item1.PayInfo</h6>
+            <br />
+        </div>
+        <hr />
+        <p>
+            <div>
+                <a style="margin-bottom: 20px;
+            display: block">نام : @Model.Item3.UserInfo.Fname</a>
+                <a style="margin-bottom: 20px;
+            display: block">نام خانوادگی : @Model.Item3.UserInfo.Lname</a>
+                <span style="margin-bottom: 20px;
+            display: block">استان :@Model.Item3.UserInfo.Province</span>
+                <span style="margin-bottom: 20px;
+            display: block">شهر :@Model.Item3.UserInfo.City</span>
+            </div>
+            <input style="margin-bottom: 20px;
+            display: block;
+            width: -webkit-fill-available;
+            padding: 8px;
+            background-color: transparent;
+            border: none;
+            color: #808080;" value="آدرس :@Model.Item3.UserInfo.Address" readonly disabled />
+            <textarea style="margin-bottom: 20px;
+            width: -webkit-fill-available;" disabled readonly>توضیحات : @Model.Item1.Description</textarea>
+        </p>
+
+        <button type="submit">ارسال</button>
+    </div>
+</form>

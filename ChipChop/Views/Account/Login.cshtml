@@ -1,0 +1,46 @@
+﻿@model chipchop.Core.ViewModels.LoginModel
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/shared/_LoginLayout.cshtml";
+}
+        <form asp-action="Login">
+            <div class="background-space">
+                <div class="SOL-part">
+                    <h2>ورود</h2>
+                    <div class="input-Pos">
+                        <div class="form-group">
+                            <a>نام کاربری</a>
+                            <input asp-for="UserName" class="form-control">
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <a>رمز عبور</a>
+                            <input asp-for="Password" class="form-control">
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <button>ورود به حساب</button>
+                        <a asp-controller="Account" asp-action="Register" style="margin-bottom: 8px;" class="links">ساخت حساب جدید</a>
+                        <a class="links" href="#">فراموشی رمز</a>
+                    </div>
+                </div>
+                <img class="img" src="~/images/moien lokht.jpg">
+            </div>
+        </form>
+
+            @* <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="ورود به حساب کاربری" class="btn btn-primary" />
+            </div> *@

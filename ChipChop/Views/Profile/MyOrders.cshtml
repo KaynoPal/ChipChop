@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Factor>
+
+@{
+    if (Model.Count() > 0)
+    {
+        foreach (var item in Model)
+        {
+            <h3>@item.Status</h3>
+        }
+    }
+    else
+    {
+        <h4>سفارشی پیدا نشد</h4>
+    }
+}

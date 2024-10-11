@@ -1,0 +1,124 @@
+﻿body {
+    margin: auto;
+    background-color: #252525 !important;
+    direction: rtl;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #272727;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #c51e1e;
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: #f34040;
+    }
+
+
+.adminside{
+    color:gray;
+}
+
+.adminside .table {
+    --bs-table-color: gray;
+    --bs-table-bg: transparent;
+    width: 95%;
+    margin: auto;
+    text-align: center;
+}
+
+.side-bar {
+    top: 100px;
+    right: -100%;
+    transition: 0.7s;
+}
+
+    .side-bar a {
+        position: relative;
+        text-decoration: none;
+        padding: 5px;
+        display: block;
+        margin: 5px 0;
+        width:max-content;
+        color: #252525;
+    }
+
+        .side-bar a::before {
+            position: absolute;
+            content: '';
+            bottom: -1px;
+            border-radius:15px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: #252525;
+            transform: scaleX(0);
+            transform-origin: 50% 0%;
+            transition: 0.5s;
+
+        }
+        .side-bar a:hover::before {
+            background-color: #252525;
+            cursor: pointer;
+            transform: scaleX(1);
+            
+        }
+
+.signout{
+    position:fixed;
+    bottom:20px;
+    left: 20px;
+    text-decoration:none;
+    display:block;
+    padding: 8px;
+    background-color: gold;
+    color: #252525;
+    margin:0;
+    font-size:12px;
+    border-radius:15px;
+    border:2px solid black;
+}
+
+.adminProfile {
+    width:95%;
+    margin:auto;
+    padding-top: 30px;
+}
+
+.adminProfile img {
+    border-radius: 150px;
+    width: 300px;
+    float:left;
+    height: 300px;
+}
+
+
+.adminProfile .tasks{
+    list-style-type:none;
+    padding: 0;
+    margin: 28px 0 0 0;
+    width:300px;
+    border-radius: 15px;
+    border:solid 2px currentcolor;
+}
+
+.adminProfile .tasks li{
+    padding: 15px;
+    border-bottom: solid 1px currentcolor;
+}
+
+    .adminProfile .tasks li:last-child{
+        border-bottom:0;
+    }
+
+    .adminProfile .tasks li a {
+        text-decoration: none;
+        width:max-content;
+        color: #cecece;
+    }

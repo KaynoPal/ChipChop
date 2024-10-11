@@ -1,0 +1,56 @@
+﻿@model IEnumerable<chipchop.Datalayer.Models.Group>
+
+@{
+    ViewData["Title"] = "| admin panel | ";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>List of Groups</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary rounded-5">submit new group</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.GroupName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Img)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Visible)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GroupName)
+            </td>
+            <td>
+                @* @Html.DisplayFor(modelItem => item.Img) *@
+
+                 @*metod 1*@
+                @* @Html.Raw(item.Img) *@
+
+                @* metod 2*@
+                <img src="~/images/groups/@item.Img" width="100" />
+
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Visible)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

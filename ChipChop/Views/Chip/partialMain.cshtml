@@ -1,0 +1,68 @@
+﻿@* <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"> *@
+@model IEnumerable<Content>
+<main>
+    @if (Model.Count() > 0)
+    {
+        <div class="right-content">
+            @* <div class="top-red-bar">
+                <a></a>
+            </div> *@
+            @foreach (var item in Model)
+            {
+                <div class="r-items">
+                    <a asp-controller="chip" asp-action="ContentPage" asp-route-id="@item.Id">
+                        <img src="~/images/content/@item.Img" alt="@item.Img?.ToString()">
+                    </a>
+                    <div class="rc-info">
+                        <span class="fa fa-bookmark"></span>
+                        <a asp-controller="chip" asp-action="ContentPage" asp-route-id="@item.Id">@item.Name</a>
+                        <p>@item.Description</p>
+                    </div>
+                </div>
+            }
+            <div class="bottom-bar">
+                <a href="#" style="background-color: #b11d1d !important;">1</a>
+                <a>2</a>
+                <a>...</a>
+                <a>7</a>
+                <a>>></a>
+            </div>
+        </div>
+
+        <div class="left-content">
+            <div class="ads">
+                @foreach (var item in Model)
+                {
+                    <div class="l-items">
+                        <img src="~/images/content/@item.Img" alt=":|">
+                        <a>@item.Name</a>
+                        <p>@item.Description</p>
+                    </div>
+                }
+            </div>
+        </div>
+
+        @* <div class="left-content">
+    <div class="ads">
+    <div class="l-items">
+    <img src="~/images/moien lokht.jpg" alt=":|">
+    <a>آیا معین تلاش دارد پیامی به جمهوری اسلامی ارسال کند؟</a>
+    <p>حرکت جنجالی معین خواننده معروف ایرانی</p>
+    </div>
+    <div class="l-items">
+    <img src="~/images/moien lokht.jpg" alt=":|">
+    <a>آیا معین تلاش دارد پیامی به جمهوری اسلامی ارسال کند؟</a>
+    <p>حرکت جنجالی معین خواننده معروف ایرانی</p>
+    </div>
+    </div>
+    </div> *@
+    }
+    else
+    {
+        <a style="
+            color: red;
+            margin: 15px;
+            padding-top: 20px;
+                        ">nothing found</a>
+    }
+</main>

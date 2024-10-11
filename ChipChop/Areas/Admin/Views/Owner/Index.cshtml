@@ -1,0 +1,20 @@
+﻿@model chipchop.Datalayer.Models.User
+@{
+    ViewData["Title"] = "پروفایل ادمین";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="adminProfile">
+    <div class="d">
+        <img src="~/images/moien lokht.jpg" alt="admin profile picture" />
+        <h2 class="UserName">Username: @Model.UserName <span class="fa fa-user"></span></h2>
+    </div>
+    <div>
+        <ul class="tasks">
+            <li><a href="#">dsadsadsa</a></li>
+            <li><a href="#">dsadsadsa</a></li>
+            <li><a href="#">dsadsadsa</a></li>
+            <li><a href="#">dsadsadsa</a></li>
+        </ul>
+    </div>
+</div>

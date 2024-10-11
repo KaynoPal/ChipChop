@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Content>
+@{
+    ViewData["Title"] = "chipchop";
+    Layout = "~/Views/shared/_MainLayout.cshtml";
+}
+
+@*Slider*@
+<partial name="partialSlider" />
+
+@*groups*@
+<partial name="partialGroups" model="ViewBag.groups"/>
+
+@*ads*@
+<partial name="PADS" />
+
+@*Main*@
+<partial name="partialMain" model="@Model"/>

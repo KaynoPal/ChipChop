@@ -1,0 +1,78 @@
+﻿<header>
+    <div class="center-of-header">
+        <a>کتاب های برنامه نویسی</a>
+        <a>بهترین بازی های سال 2024</a>
+    </div>
+    <div class="parts-of-header">
+        <img class="header-logo" src="~/images//IMG_20230718_171803_746.png" alt="Logo" />
+        <div class="list-a">
+            <div class="ligma">
+                <i class="fa fa-bars"></i>
+            </div>
+            <ul>
+                <li>
+                    <a href="https://localhost:44327/">صفحه اصلی</a>
+                </li>
+
+                <li>
+                    <a>تبلیغات</a>
+                </li>
+
+                <li>
+                    <a>فروشگاه</a>
+                </li>
+
+                <li>
+                    <a>فیلم و سریال</a>
+                </li>
+
+                <li>
+                    <a>اموزش</a>
+                    <ul>
+                        <li>سی شارپ</li>
+                        <li>پایتون</li>
+                        <li>جاوا اسکریپت</li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a>درباره ما</a>
+                </li>
+            </ul>
+        </div>
+        <div class="btn-poh">
+            <form asp-controller="Chip" asp-action="Search" method="get">
+                <div class="search-group">
+                    <input id="input-invisible" class="search-input" value="@ViewBag.search" type="text" name="ContentName" placeholder="جستجو..." />
+                    <button class="submit-search" type="submit">
+                        <span class="fa fa-search"></span>
+                    </button>
+                </div>
+            </form>
+            @*<span onclick="PopUp()" class="fa fa-search"></span>
+            <script>
+            function PopUp() {
+            var hoverup = document.getElementById('input-invisible')
+            if (hoverup.style.display = 'none') {
+            hoverup.style.display = 'block';
+            }
+            else {
+            hoverup.style.display = 'none';
+            }
+            }
+            </script> *@
+
+
+            @{
+                if (User.Identity.IsAuthenticated)
+                {
+                    <a href="~/admin/owner" class="log-in">حساب من</a>
+                }
+                else
+                {
+                    <a asp-controller="Account" asp-action="Login" class="log-in">ورود</a>
+                }
+            }
+        </div>
+    </div>
+</header>

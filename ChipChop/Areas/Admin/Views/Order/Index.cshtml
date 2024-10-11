@@ -1,0 +1,78 @@
+﻿@model IEnumerable<chipchop.Datalayer.Models.Factor>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>فاکتورها</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IsPay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PayDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PayInfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CloseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalPrice)
+            </th>
+            @* <th>
+            @Html.DisplayNameFor(model => model.Description)
+            </th> *@
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsPay)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PayDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PayInfo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CloseDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalPrice)
+                </td>
+                @* <td>
+            @Html.DisplayFor(modelItem => item.Description)
+            </td> *@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserId)
+                </td>
+                <td>
+                    @if (item.Status != "بسته شده")
+                    {
+                        <a class="text-success text-decoration-none" asp-action="PostTheOrder" asp-route-id="@item.Id">تکمیل سفارش</a>
+                        <a class="text-warning text-decoration-none" asp-action="CloseOrder" asp-route-id="@item.Id">بستن سفارش</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

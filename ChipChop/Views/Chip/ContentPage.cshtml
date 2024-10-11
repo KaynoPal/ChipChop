@@ -1,0 +1,103 @@
+﻿@model (Content,AddShoppingVM)
+@{
+    ViewData["Title"] = "ContentPage";
+    Layout = "~/Views/shared/_MainLayout.cshtml";
+}
+
+<div class="row m-auto pt-4" style="display: flex;
+    justify-content: space-between;
+    margin: 0 150px !important;">
+    @* image box *@
+    <div class="col-md-4" style="padding:0!important;">
+        <img class="ContentImage" src="~/images/content/@Model.Item1.Img" alt="@Model.Item1.Name"/>
+    </div>
+
+    @* info box *@
+    <main class="col-md-7 mainmainmain">
+        <h1>@Model.Item1.Name</h1>
+        <p>@Model.Item1.Description</p>
+        <h5>@Model.Item1.SubmitDate</h5>
+        <h4>گروه : @Model.Item1.Group.GroupName</h4>
+
+        @* product price detail *@
+        @{
+            var price = Model.Item1.price;
+            var sellOff = Model.Item1.Selloff;
+
+            price = price * (100 - sellOff) / 100;
+            // price = price-(price*sellOff/100);
+
+            if (Model.Item1.price > 0 && Model.Item1.NumberAvailable > 0)
+            {
+
+                if (Model.Item1.Selloff > 0)
+                {
+                    <h5>
+                        <del>@Model.Item1.price.ToString("n0")</del>                                 @price.ToString("n0") تومان
+                        <span class="bg-danger text-white rounded-3 small p-1">
+                            @sellOff %
+                        </span>
+                    </h5>
+
+                }
+                else
+                {
+                    <h5>@Model.Item1.price.ToString("n0") تومان</h5>
+                }
+
+                <h6>موجودی : @Model.Item1.NumberAvailable</h6>
+
+                // add to shopping cart
+                <form asp-controller="chip" asp-action="AddtoShoppingCart" method="post">
+
+                    @*<input name="count" value="1" />
+            <input name="userId" value="1" />
+            <input name="productId" value="@Model.Id" />*@
+                    <input name="UserId" asp-for="@Model.Item2.Userid" readonly hidden />
+                    <input name="Contentid" asp-for="@Model.Item2.Contentid" readonly hidden />
+                    @*<input asp-for="@Model.Item2.ShoppingCount" />*@
+
+                    <select name="ShoppingCount" asp-for="@Model.Item2.Shoppingcount">
+                        @for (int i = 1; i <= Model.Item1.NumberAvailable; i++)
+                        {
+                            <option value="@i">@i</option>
+                        }
+                    </select>
+
+                    @{
+                        if ((bool)ViewBag.InCart /* == true */)
+                        {
+                            //change link to shopping cart after test
+                            <a asp-controller="chip" asp-action="ShoppingCart"
+                               class="btn p-0 ps-2 bTTn">
+                                <span class="p-3 bg-warning fa-credit-card-alt"></span>
+                                موجود در سبد خرید
+                            </a>
+                        }
+                        else
+                        {
+                            <button class="btn p-0 ps-2 bTTn">
+                                <span class="p-3 fa fa-shopping-cart"></span>
+                                اضافه سبد خرید
+                            </button>
+                        }
+                    }
+
+
+                </form>
+            }
+            else if (Model.Item1.NumberAvailable == 0)
+            {
+                <button class="btn p-0 ps-2 bTTn" disabled>
+                    <span class="p-3 fa fa-times"></span>
+                    ناموجود
+                </button>
+            }
+        }
+
+
+    </main>
+</div>
+
+<partial name="partialMain" model="@ViewBag.related"/>
+
